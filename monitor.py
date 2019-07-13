@@ -16,7 +16,7 @@ timeToSleep = 7
 
 def write_to_file(location, song):
     o_file = open(location, 'w')
-    o_file.write(song)
+    o_file.write(song + '      ')
     o_file.close()
     print(song)
 
@@ -26,9 +26,9 @@ while True:
     decoded = json.loads(i_file.read())
     i_file.close()
 
-    new_song_name = "Playing in silence"
+    new_song_name = "NO MUSIC"
     if decoded['playing']:
-        new_song_name = decoded['song']['artist'] + " - " + decoded['song']['title'] + '      '
+        new_song_name = decoded['song']['artist'] + " - " + decoded['song']['title']
 
     if song_name != new_song_name:
         song_name = new_song_name
