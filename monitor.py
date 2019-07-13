@@ -21,7 +21,7 @@ while True:
 
     new_song_name = "Playing in silence"
     if decoded['playing']:
-        new_song_name = decoded['song']['artist'] + " - " + decoded['song']['title']
+        new_song_name = decoded['song']['artist'] + " - " + decoded['song']['title'] + '      '
 
     if song_name != new_song_name:
         song_name = new_song_name
