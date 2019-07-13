@@ -1,20 +1,30 @@
 import json
 import time
 
-fileLocation = "C:\\Users\\Art4es\\AppData\\Roaming\\Google Play Music Desktop Player\\json_store\\playback.json"
-obsFileLocation = 'C:\\Users\\Art4es\\Desktop\\obs'
-songName = ""
+file_location = "C:\\Users\\Art4es\\AppData\\Roaming\\Google Play Music Desktop Player\\json_store\\playback.json"
+obs_file_location = 'C:\\Users\\Art4es\\Desktop\\obs\\songname.txt'
+song_name = ""
 timeToSleep = 7
 
+
+def write_to_file(location, song):
+    o_file = open(location, 'w')
+    o_file.write(song)
+    o_file.close()
+    print(song)
+
+
 while True:
-    iFile = open(fileLocation, 'r')
-    decoded = json.loads(iFile.read())
-    iFile.close()
-    newSongName = decoded['song']['artist'] + " - " + decoded['song']['title']
-    if songName != newSongName:
-        songName = newSongName
-        oFile = open(obsFileLocation + '\\songname.txt', 'w')
-        oFile.write(songName)
-        oFile.close()
-        print(songName)
+    i_file = open(file_location, 'r')
+    decoded = json.loads(i_file.read())
+    i_file.close()
+
+    new_song_name = "Playing in silence"
+    if decoded['playing']:
+        new_song_name = decoded['song']['artist'] + " - " + decoded['song']['title']
+
+    if song_name != new_song_name:
+        song_name = new_song_name
+        write_to_file(obs_file_location, song_name)
+
     time.sleep(timeToSleep)
