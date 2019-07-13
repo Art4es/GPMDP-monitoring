@@ -1,9 +1,16 @@
+from pathlib import Path
 import json
 import time
 
-file_location = "C:\\Users\\Art4es\\AppData\\Roaming\\Google Play Music Desktop Player\\json_store\\playback.json"
+# Edit this IF you have NOT DEFAULT path, where gpmdp stores song information
+file_location = str(Path.home()) + "\\AppData\\Roaming\\Google Play Music Desktop Player\\json_store\\playback.json"
+
+# EDIT THIS ANYWAY
 obs_file_location = 'C:\\Users\\Art4es\\Desktop\\obs\\songname.txt'
+
 song_name = ""
+
+# Edit if you want (update period)
 timeToSleep = 7
 
 
